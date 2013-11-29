@@ -6,7 +6,7 @@ import flash.text.TextField;
 public class Main extends Sprite {
     public function Main() {
         var textField:TextField = new TextField();
-        textField.text = "github is voor janetteuuu";
+        textField.text = "Test test test";
         addChild(textField);
     }
 }
