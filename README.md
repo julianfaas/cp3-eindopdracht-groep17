@@ -1,1 +1,5 @@
-Demo repository
+Eindopdracht CP3
+=======
+
+Groep 17
+-----------
