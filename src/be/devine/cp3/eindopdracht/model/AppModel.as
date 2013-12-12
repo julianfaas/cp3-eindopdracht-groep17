@@ -25,13 +25,14 @@ public class AppModel extends EventDispatcher {
     }
 
     public function load():void {
+        trace("[AppModel] Loading JSON");
         var conversionService:ConversionService = new ConversionService();
         conversionService.addEventListener(Event.COMPLETE, loadedCompleteHandler);
         conversionService.load();
     }
 
     private function loadedCompleteHandler(event:Event):void {
-
+        trace("[AppModel] JSON Loaded");
     }
 }
 }
