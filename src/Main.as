@@ -1,6 +1,6 @@
 package {
 
-import be.devine.cp3.eindopdracht.Application;
+import be.devine.cp3.eindopdracht.mobile.Application;
 
 import flash.display.Sprite;
 import flash.display.StageAlign;

@@ -1,9 +1,9 @@
 package be.devine.cp3.eindopdracht.model {
 
+import be.devine.cp3.eindopdracht.model.service.ConversionService;
+
 import flash.events.Event;
 import flash.events.EventDispatcher;
-import flash.net.URLLoader;
-import flash.net.URLRequest;
 
 public class AppModel extends EventDispatcher {
 
@@ -25,18 +25,13 @@ public class AppModel extends EventDispatcher {
     }
 
     public function load():void {
-        var songsXMLLoader:URLLoader = new URLLoader();
-        songsXMLLoader.addEventListener(Event.COMPLETE, conversionXMLLoaderCompleteHandler);
-        songsXMLLoader.load(new URLRequest("assets/xml/conversion.xml"));
+        var conversionService:ConversionService = new ConversionService();
+        conversionService.addEventListener(Event.COMPLETE, loadedCompleteHandler);
+        conversionService.load();
     }
 
-    private function conversionXMLLoaderCompleteHandler(event:Event):void {
-        var conversionsXML:XML = new XML(event.target.data);
-        var conversions:Array = [];
+    private function loadedCompleteHandler(event:Event):void {
 
-        for each(var conversion:Object in conversionsXML.conversion) {
-            trace("[XML] Loaded");
-        }
     }
 }
 }
