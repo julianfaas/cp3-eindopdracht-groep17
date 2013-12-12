@@ -1,11 +1,13 @@
 
 package be.devine.cp3.eindopdracht.mobile.view {
+
 import be.devine.cp3.eindopdracht.model.AppModel;
 
 import feathers.controls.ImageLoader;
 import flash.display.BitmapData;
-
-import starling.display.Image;
+import starling.animation.Transitions;
+import starling.animation.Tween;
+import starling.core.Starling;
 import starling.display.Sprite;
 import starling.textures.Texture;
 import starling.textures.TextureAtlas;
@@ -32,8 +34,12 @@ public class IntroScreen extends Sprite {
 
         _introScreen = new ImageLoader();
         _introScreen.source = _atlas.getTexture("intro.png");
-        _introScreen.setSize(640, 1136);
         addChild(_introScreen);
+
+        var t:Tween = new Tween(_introScreen, 1, Transitions.EASE_IN_OUT);
+        t.animate("y", _introScreen.x - 1500);
+        t.delay = 1;
+        Starling.juggler.add(t);
     }
 }
 }
