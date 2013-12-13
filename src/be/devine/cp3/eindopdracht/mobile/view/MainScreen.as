@@ -11,6 +11,7 @@ public class MainScreen extends Sprite {
 
     public function MainScreen() {
         trace("[MainScreen] Startup");
+        trace("[Mainscreen] Test");
 
     }
 }
