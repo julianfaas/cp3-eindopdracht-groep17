@@ -41,13 +41,18 @@ public class IntroScreen extends Sprite {
         t.animate("y", _introScreen.x - 1500);
         t.delay = 1;
         Starling.juggler.add(t);
-        t.onComplete = onTweenComplete;
+
+        t.onComplete = completeHandler;
     }
 
-    private function onTweenComplete():void {
-        trace("tween done");
+
+    private function completeHandler():void {
+
+
         _menu = new MainScreen();
         addChild( _menu );
+
+
     }
 }
 }

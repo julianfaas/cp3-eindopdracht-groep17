@@ -710,6 +710,7 @@ package feathers.themes
 			button.paddingLeft = 28 * this.scale;
 		}
 
+
 		protected function forwardButtonInitializer(button:Button):void
 		{
 			const skinSelector:SmartDisplayObjectStateValueSelector = new SmartDisplayObjectStateValueSelector();
