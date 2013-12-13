@@ -2,7 +2,6 @@
 package be.devine.cp3.eindopdracht.mobile {
 
 import be.devine.cp3.eindopdracht.mobile.view.IntroScreen;
-import be.devine.cp3.eindopdracht.mobile.view.MainScreen;
 import be.devine.cp3.eindopdracht.model.AppModel;
 import feathers.themes.MetalWorksMobileTheme;
 import starling.display.Sprite;
@@ -13,7 +12,7 @@ public class Application extends Sprite {
     private var _appModel:AppModel;
 
     private var _intro:IntroScreen;
-    private var _menu:MainScreen;
+
 
     public function Application() {
         trace("[Application] Startup");
@@ -24,9 +23,6 @@ public class Application extends Sprite {
 
         _intro = new IntroScreen();
         addChild( _intro );
-
-        _menu = new MainScreen();
-        addChild( _menu );
 
         _appModel.load();
         addEventListener(Event.ADDED_TO_STAGE, addedToStageHandler);
