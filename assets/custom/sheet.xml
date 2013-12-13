@@ -1,0 +1,6 @@
+<TextureAtlas imagePath="sheet.png">
+	<SubTexture name="btn_01.png" x="482" y="0" width="480" height="365"/>
+	<SubTexture name="btn_02.png" x="482" y="367" width="480" height="365"/>
+	<SubTexture name="btn_03.png" x="0" y="802" width="75" height="70"/>
+	<SubTexture name="intro.png" x="0" y="0" width="480" height="800"/>
+</TextureAtlas>
