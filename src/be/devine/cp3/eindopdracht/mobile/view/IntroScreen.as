@@ -35,7 +35,7 @@ public class IntroScreen extends Sprite {
         _atlas = new TextureAtlas(Texture.fromBitmapData(atlasBitmapData, false), XML(new ATLAS_XML()));
 
         _introScreen = new ImageLoader();
-        _introScreen.source = _atlas.getTexture("intro.png");
+        _introScreen.source = _atlas.getTexture("intro");
         addChild(_introScreen);
 
         var t:Tween = new Tween(_introScreen, 1, Transitions.EASE_IN_OUT);
