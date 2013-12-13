@@ -10,8 +10,7 @@ public class MainScreen extends Sprite {
     protected static const FAIRVIEW_REGULAR:Class;
 
     public function MainScreen() {
-        trace("[MainScreen] Startup");
-        trace("[Mainscreen] Test");
+        
 
     }
 }

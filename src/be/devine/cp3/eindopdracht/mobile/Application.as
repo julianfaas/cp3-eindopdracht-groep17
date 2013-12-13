@@ -13,7 +13,7 @@ public class Application extends Sprite {
     private var _appModel:AppModel;
 
     private var _intro:IntroScreen;
-    private var _menu:MainScreen;
+
 
     public function Application() {
         trace("[Application] Startup");
@@ -25,8 +25,7 @@ public class Application extends Sprite {
         _intro = new IntroScreen();
         addChild( _intro );
 
-        _menu = new MainScreen();
-        addChild( _menu );
+
 
         _appModel.load();
         addEventListener(Event.ADDED_TO_STAGE, addedToStageHandler);

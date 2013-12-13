@@ -23,6 +23,7 @@ public class IntroScreen extends Sprite {
     private var _appModel:AppModel;
     private var _atlas:TextureAtlas;
     private var _introScreen:ImageLoader;
+    private var _menu:MainScreen;
 
     public function IntroScreen() {
         trace("[IntroScreen] Startup");
@@ -40,6 +41,13 @@ public class IntroScreen extends Sprite {
         t.animate("y", _introScreen.x - 1500);
         t.delay = 1;
         Starling.juggler.add(t);
+        t.onComplete = onTweenComplete;
+    }
+
+    private function onTweenComplete():void {
+        trace("tween done");
+        _menu = new MainScreen();
+        addChild( _menu );
     }
 }
 }
