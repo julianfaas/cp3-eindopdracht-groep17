@@ -3,6 +3,9 @@ package be.devine.cp3.eindopdracht.mobile {
 
 import be.devine.cp3.eindopdracht.mobile.view.IntroScreen;
 import be.devine.cp3.eindopdracht.model.AppModel;
+
+import feathers.controls.ScreenNavigator;
+import feathers.controls.ScreenNavigatorItem;
 import feathers.themes.MetalWorksMobileTheme;
 import starling.display.Sprite;
 import starling.events.Event;

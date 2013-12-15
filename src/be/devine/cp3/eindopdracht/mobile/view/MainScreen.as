@@ -6,6 +6,9 @@ import be.devine.cp3.eindopdracht.model.AppModel;
 import feathers.controls.Button;
 import feathers.controls.ImageLoader;
 import feathers.controls.LayoutGroup;
+import feathers.controls.Screen;
+import feathers.controls.ScreenNavigator;
+import feathers.controls.ScreenNavigatorItem;
 import feathers.events.FeathersEventType;
 import feathers.layout.HorizontalLayout;
 import feathers.layout.VerticalLayout;
@@ -45,6 +48,11 @@ public class MainScreen extends Sprite {
     private var _existingButton:Button;
     private var _newButton:Button;
 
+    private var _navigator:ScreenNavigator;
+
+    private static const CONVERSIONS_LIST:String= "ConversionsList";
+    private static const CREATE_CONVERSION:String= "CreateConversion";
+
     private var _explicitWidth:Number = 0;
     private var _explicitHeight:Number = 0;
 
@@ -71,6 +79,9 @@ public class MainScreen extends Sprite {
         title.vAlign = VAlign.TOP;
         addChild(title);
 
+        _navigator = new ScreenNavigator();
+        addChild( _navigator );
+
         _buttonGroup = new LayoutGroup();
         _buttonGroup.addEventListener(FeathersEventType.CREATION_COMPLETE, buttonGroupCreationCompleteHandler);
         _buttonGroup.y = title.height;
@@ -95,6 +106,12 @@ public class MainScreen extends Sprite {
         _newButton.setSize(482, 365);
         _buttonGroup.addChild( _newButton );
         _newButton.addEventListener(starling.events.Event.TRIGGERED, newTriggeredHandler);
+
+
+        _navigator = new ScreenNavigator();
+        addChild(_navigator);
+
+
     }
 
     private function buttonGroupCreationCompleteHandler(event:starling.events.Event):void {
@@ -107,11 +124,14 @@ public class MainScreen extends Sprite {
     }
 
     private function existingTriggeredHandler(event:starling.events.Event):void {
-        trace("Existingbutton clicked");
+        _navigator.addScreen(CONVERSIONS_LIST, new ScreenNavigatorItem(ConversionsList));
+        _navigator.showScreen(CONVERSIONS_LIST);
+
     }
 
     private function newTriggeredHandler(event:starling.events.Event):void {
-        trace("Newbutton clicked");
+        _navigator.addScreen(CREATE_CONVERSION, new ScreenNavigatorItem(CreateConversion));
+        _navigator.showScreen(CREATE_CONVERSION);
 
     }
 }
