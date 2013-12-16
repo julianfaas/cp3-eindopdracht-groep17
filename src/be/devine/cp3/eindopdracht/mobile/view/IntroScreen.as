@@ -8,6 +8,8 @@ import feathers.controls.ScreenNavigator;
 import feathers.controls.ScreenNavigatorItem;
 
 import flash.display.BitmapData;
+import flash.events.Event;
+
 import starling.animation.Transitions;
 import starling.animation.Tween;
 import starling.core.Starling;
@@ -38,17 +40,8 @@ public class IntroScreen extends Sprite {
         _atlas = new TextureAtlas(Texture.fromBitmapData(atlasBitmapData, false), XML(new ATLAS_XML()));
 
 
+        addEventListener(starling.events.Event.ADDED_TO_STAGE, addedToStageHandler);
 
-        _introScreen = new ImageLoader();
-        _introScreen.source = _atlas.getTexture("intro");
-        addChild(_introScreen);
-
-        var t:Tween = new Tween(_introScreen, 1, Transitions.EASE_IN_OUT);
-        t.animate("y", _introScreen.x - 1500);
-        t.delay = 1;
-        Starling.juggler.add(t);
-
-        t.onComplete = completeHandler;
     }
 
 
@@ -60,5 +53,20 @@ public class IntroScreen extends Sprite {
 
     }
 
+    private function addedToStageHandler(event:starling.events.Event):void {
+        _introScreen = new ImageLoader();
+        _introScreen.source = _atlas.getTexture("intro");
+        addChild(_introScreen);
+        _introScreen.x = stage.width/2;
+
+        var t:Tween = new Tween(_introScreen, 1, Transitions.EASE_IN_OUT);
+        t.animate("y", _introScreen.x - 1500);
+        t.delay = 1;
+        Starling.juggler.add(t);
+
+        t.onComplete = completeHandler;
+        _introScreen.x = 110;
+        _introScreen.y = 400;
+    }
 }
 }

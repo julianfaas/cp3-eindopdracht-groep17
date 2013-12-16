@@ -47,11 +47,7 @@ public class MainScreen extends Sprite {
     private var _buttonGroup:LayoutGroup;
     private var _existingButton:Button;
     private var _newButton:Button;
-
-    private var _navigator:ScreenNavigator;
-
-    private static const CONVERSIONS_LIST:String= "ConversionsList";
-    private static const CREATE_CONVERSION:String= "CreateConversion";
+    private var _title:TextField;
 
     private var _explicitWidth:Number = 0;
     private var _explicitHeight:Number = 0;
@@ -72,19 +68,16 @@ public class MainScreen extends Sprite {
 
 
     private function addedToStageHandler(event:starling.events.Event):void {
-        var title:TextField = new TextField(300, 100, "Konvert", "FAIRVIEW_REGULAR", 60, 0xffffff);
-        title.x = stage.width/2 - title.width/2;
-        title.italic = true;
-        title.hAlign = HAlign.CENTER;
-        title.vAlign = VAlign.TOP;
-        addChild(title);
-
-        _navigator = new ScreenNavigator();
-        addChild( _navigator );
+        _title = new TextField(300, 100, "Konvert", "FAIRVIEW_REGULAR", 60, 0xffffff);
+        _title.x = 90;
+        _title.italic = true;
+        _title.hAlign = HAlign.CENTER;
+        _title.vAlign = VAlign.TOP;
+        addChild(_title);
 
         _buttonGroup = new LayoutGroup();
         _buttonGroup.addEventListener(FeathersEventType.CREATION_COMPLETE, buttonGroupCreationCompleteHandler);
-        _buttonGroup.y = title.height;
+        _buttonGroup.y = _title.height;
         addChild(_buttonGroup);
 
         var layout:VerticalLayout = new VerticalLayout();
@@ -93,7 +86,7 @@ public class MainScreen extends Sprite {
         _buttonGroup.layout = layout;
 
         _existingButton = new Button();
-        _existingButton.defaultIcon = new Image(_atlas.getTexture("btn_01"));
+        _existingButton.defaultIcon = new Image(_atlas.getTexture("btnExistingConversion"));
         _existingButton.label = "Bestaande Conversie Kiezen";
         _existingButton.setSize(482, 365);
         _existingButton.x = 0;
@@ -101,16 +94,11 @@ public class MainScreen extends Sprite {
         _existingButton.addEventListener(starling.events.Event.TRIGGERED, existingTriggeredHandler);
 
         _newButton = new Button();
-        _newButton.defaultIcon = new Image(_atlas.getTexture("btn_02"));
+        _newButton.defaultIcon = new Image(_atlas.getTexture("btnNewConversion"));
         _newButton.label = "Nieuwe Conversie Toevoegen";
         _newButton.setSize(482, 365);
         _buttonGroup.addChild( _newButton );
         _newButton.addEventListener(starling.events.Event.TRIGGERED, newTriggeredHandler);
-
-
-        _navigator = new ScreenNavigator();
-        addChild(_navigator);
-
 
     }
 
@@ -124,14 +112,17 @@ public class MainScreen extends Sprite {
     }
 
     private function existingTriggeredHandler(event:starling.events.Event):void {
-        _navigator.addScreen(CONVERSIONS_LIST, new ScreenNavigatorItem(ConversionsList));
-        _navigator.showScreen(CONVERSIONS_LIST);
+        trace("Existing list");
+
+        removeChild(_title);
+        removeChild(_buttonGroup);
+        var _conversionsList = new ConversionsList();
+        addChild(_conversionsList);
 
     }
 
     private function newTriggeredHandler(event:starling.events.Event):void {
-        _navigator.addScreen(CREATE_CONVERSION, new ScreenNavigatorItem(CreateConversion));
-        _navigator.showScreen(CREATE_CONVERSION);
+        trace("Create Conversion");
 
     }
 }
