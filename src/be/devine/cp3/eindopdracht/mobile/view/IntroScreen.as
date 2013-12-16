@@ -39,34 +39,27 @@ public class IntroScreen extends Sprite {
         const atlasBitmapData:BitmapData = (new ATLAS_IMAGE()).bitmapData;
         _atlas = new TextureAtlas(Texture.fromBitmapData(atlasBitmapData, false), XML(new ATLAS_XML()));
 
-
         addEventListener(starling.events.Event.ADDED_TO_STAGE, addedToStageHandler);
-
     }
 
-
     private function completeHandler():void {
-
         _menu = new MainScreen();
         addChild( _menu );
-
-
     }
 
     private function addedToStageHandler(event:starling.events.Event):void {
         _introScreen = new ImageLoader();
         _introScreen.source = _atlas.getTexture("intro");
         addChild(_introScreen);
-        _introScreen.x = stage.width/2;
+        _introScreen.x = (stage.stageWidth/2 - _introScreen.width/2) - 125;
+        _introScreen.y = stage.stageHeight/2 - _introScreen.height/2;
 
         var t:Tween = new Tween(_introScreen, 1, Transitions.EASE_IN_OUT);
-        t.animate("y", _introScreen.x - 1500);
+        t.animate("y", _introScreen.x - 1000);
         t.delay = 1;
         Starling.juggler.add(t);
 
         t.onComplete = completeHandler;
-        _introScreen.x = 110;
-        _introScreen.y = 400;
     }
 }
 }
