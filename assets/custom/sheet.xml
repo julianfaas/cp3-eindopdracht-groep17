@@ -1,6 +1,9 @@
 <TextureAtlas imagePath="sheet.png">
-	<SubTexture name="btn_01" x="482" y="0" width="480" height="365"/>
-	<SubTexture name="btn_02" x="482" y="367" width="480" height="365"/>
-	<SubTexture name="btn_03" x="0" y="802" width="75" height="70"/>
-	<SubTexture name="intro" x="0" y="0" width="480" height="800"/>
+	<SubTexture name="bgList1.png" x="0" y="367" width="494" height="146"/>
+	<SubTexture name="bgList2.png" x="0" y="515" width="494" height="147"/>
+	<SubTexture name="btnExistingConversion.png" x="496" y="0" width="494" height="365"/>
+	<SubTexture name="btnMenu.png" x="0" y="809" width="75" height="70"/>
+	<SubTexture name="btnNewConversion.png" x="0" y="0" width="494" height="365"/>
+	<SubTexture name="btnSwitch.png" x="0" y="664" width="75" height="70"/>
+	<SubTexture name="new-btn.png" x="0" y="736" width="75" height="71"/>
 </TextureAtlas>
