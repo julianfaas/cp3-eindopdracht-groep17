@@ -107,7 +107,6 @@ public class ConversionsListScreen extends Sprite {
         _buttonGroupNew.addChild( _btnNewConversion );
         _btnNewConversion.addEventListener(starling.events.Event.TRIGGERED, newTriggeredHandler);
 
-
     }
 
     private function buttonGroupCreationCompleteHandler(event:starling.events.Event):void {
