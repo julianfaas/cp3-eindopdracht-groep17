@@ -6,10 +6,11 @@
  * To change this template use File | Settings | File Templates.
  */
 package be.devine.cp3.eindopdracht.mobile.view {
+
 import starling.display.Sprite;
 
-public class ConversionScreen extends Sprite {
-    public function ConversionScreen() {
+public class ConversionDetail extends Sprite {
+    public function ConversionDetail() {
 
 
     }

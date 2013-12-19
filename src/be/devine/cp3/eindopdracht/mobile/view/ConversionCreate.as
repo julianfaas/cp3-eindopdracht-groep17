@@ -27,7 +27,7 @@ import starling.textures.TextureAtlas;
 import starling.utils.HAlign;
 import starling.utils.VAlign;
 
-public class CreateConversionScreen extends Sprite {
+public class ConversionCreate extends Sprite {
 
     [Embed(source="/../assets/custom/sheet.png")]
     protected static const ATLAS_IMAGE:Class;
@@ -75,9 +75,9 @@ public class CreateConversionScreen extends Sprite {
     private var _explicitWidth:Number = 0;
     private var _explicitHeight:Number = 0;
 
-    public function CreateConversionScreen() {
+    public function ConversionCreate() {
+        trace("[CREATECONVERSIONSCREEN] Startup");
 
-        trace("[CREATECONVERSIONSCREEN] + initialized");
         _appModel = AppModel.getInstance();
 
         const atlasBitmapData:BitmapData = (new ATLAS_IMAGE()).bitmapData;
@@ -88,7 +88,6 @@ public class CreateConversionScreen extends Sprite {
 
     private function addedToStageHandler(event:starling.events.Event):void {
         drawScreen();
-
     }
 
     private function drawScreen():void{
