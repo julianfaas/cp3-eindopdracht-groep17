@@ -8,6 +8,7 @@ import starling.animation.Tween;
 import starling.core.Starling;
 
 import starling.display.Button;
+import starling.display.DisplayObject;
 import starling.display.Sprite;
 import starling.events.Event;
 
@@ -48,7 +49,7 @@ public class MainScreen extends Sprite {
         const atlasBitmapData:BitmapData = (new ATLAS_IMAGE()).bitmapData;
         _atlas = new TextureAtlas(Texture.fromBitmapData(atlasBitmapData, false), XML(new ATLAS_XML()));
 
-        addEventListener(starling.events.Event.ADDED_TO_STAGE, drawScreen);
+        addEventListener(Event.ADDED_TO_STAGE, drawScreen);
     }
 
     private function drawScreen(event:starling.events.Event):void {
@@ -58,6 +59,7 @@ public class MainScreen extends Sprite {
         _buttonGroup.addChild(_title);
 
         _existingButton = new Button(_atlas.getTexture("btnExistingConversion"));
+        _existingButton.name = "existingConversion";
         _existingButton.width = 482;
         _existingButton.height = 365;
         _existingButton.x = 0;
@@ -71,34 +73,35 @@ public class MainScreen extends Sprite {
         _newButton.x = 0;
         _newButton.y = _title.height + _existingButton.height;
         _newButton.scaleWhenDown = 1;
+        _newButton.name = "newConversion";
         _buttonGroup.addChild( _newButton );
 
         addChild(_buttonGroup);
 
-        _existingButton.addEventListener(starling.events.Event.TRIGGERED, existingTriggeredHandler);
-        _newButton.addEventListener(starling.events.Event.TRIGGERED, newTriggeredHandler);
+        _existingButton.addEventListener(Event.TRIGGERED, selectedMenuHandler);
+        _newButton.addEventListener(Event.TRIGGERED, selectedMenuHandler);
     }
 
-    private function existingTriggeredHandler(event:starling.events.Event):void {
-        trace("Choose A Conversion");
+    private function selectedMenuHandler(event:Event):void {
+        var current = event.currentTarget;
 
-        var t:Tween = new Tween(_buttonGroup, .3, Transitions.LINEAR);
-        t.animate("x", _buttonGroup.x - 500);
+        var t:Tween = new Tween(_buttonGroup, .5, Transitions.LINEAR);
+        t.animate("x", _buttonGroup.x - 1000);
         Starling.juggler.add(t);
 
-        _conversionsList = new ConversionsList();
-        addChild(_conversionsList);
-    }
+        if(current.name == "existingConversion") {
+            trace("Choose A Conversion");
 
-    private function newTriggeredHandler(event:starling.events.Event):void {
-        trace("Create A New Conversion");
+            _newButton.x = -1000;
 
-        var t:Tween = new Tween(_buttonGroup, .3, Transitions.LINEAR);
-        t.animate("x", _buttonGroup.x - 500);
-        Starling.juggler.add(t);
+            _conversionsList = new ConversionsList();
+            addChild(_conversionsList);
+        } else {
+            trace("Create A Conversion");
+            _createConversion = new ConversionCreate();
+            addChild(_createConversion);
+        }
 
-        _createConversion = new ConversionCreate();
-        addChild(_createConversion);
     }
 }
 }

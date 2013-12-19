@@ -6,10 +6,12 @@
  * To change this template use File | Settings | File Templates.
  */
 package be.devine.cp3.eindopdracht.mobile.view {
+
 import be.devine.cp3.eindopdracht.model.AppModel;
 import be.devine.cp3.eindopdracht.vo.ConversionVO;
 
 import flash.display.BitmapData;
+
 import starling.display.Button;
 import starling.display.Sprite;
 import starling.events.Event;
@@ -52,10 +54,10 @@ public class ConversionsList extends Sprite {
         const atlasBitmapData:BitmapData = (new ATLAS_IMAGE()).bitmapData;
         _atlas = new TextureAtlas(Texture.fromBitmapData(atlasBitmapData, false), XML(new ATLAS_XML()));
 
-        addEventListener(starling.events.Event.ADDED_TO_STAGE, addedToStageHandler);
+        addEventListener(Event.ADDED_TO_STAGE, addedToStageHandler);
     }
 
-    private function addedToStageHandler(event:starling.events.Event):void {
+    private function addedToStageHandler(event:Event):void {
         drawScreen();
     }
 
@@ -71,7 +73,7 @@ public class ConversionsList extends Sprite {
         _btnMenu.width = 65;
         _btnMenu.height = 65;
         addChild( _btnMenu );
-        _btnMenu.addEventListener(starling.events.Event.TRIGGERED, menuTriggeredHandler);
+        _btnMenu.addEventListener(Event.TRIGGERED, menuTriggeredHandler);
 
         _btnNewConversion = new Button(_atlas.getTexture(("btnNewConversion")));
         _btnNewConversion.x = stage.width - _btnNewConversion.width;
@@ -101,18 +103,19 @@ public class ConversionsList extends Sprite {
             conversionItem.fontSize = 20;
             conversionItem.scaleWhenDown = 1;
             conversionItem.textHAlign = HAlign.LEFT;
+            conversionItem.name = conversionVO.name;
             conversionItem.text = conversionVO.name + "\n" + conversionVO.unit_1 + " - " + conversionVO.unit_2;
             conversionItem.y = yPos;
 
             yPos += conversionItem.height;
             items++;
-
+            conversionItem.addEventListener(Event.TRIGGERED, selectedConversionHandler);
             listContainer.addChild( conversionItem );
         }
         addChild( listContainer );
     }
 
-    private function menuTriggeredHandler(event:starling.events.Event):void {
+    private function menuTriggeredHandler(event:Event):void {
         removeChild(_title);
         removeChild(_btnMenu);
         removeChild(_btnNewConversion);
@@ -122,13 +125,18 @@ public class ConversionsList extends Sprite {
     }
 
 
-    private function newTriggeredHandler(event:starling.events.Event):void {
+    private function newTriggeredHandler(event:Event):void {
         removeChild(_title);
         removeChild(_btnMenu);
         removeChild(_btnNewConversion);
         removeChild(listContainer);
         _createConversion = new ConversionCreate();
         addChild(_createConversion);
+    }
+
+    private function selectedConversionHandler(event:Event):void {
+        var current = event.currentTarget;
+        trace(current.name);
     }
 }
 }
