@@ -27,6 +27,8 @@ public class Application extends Sprite {
 
         _appModel.load();
         addEventListener(Event.ADDED_TO_STAGE, addedToStageHandler);
+
+
     }
 
     private function addedToStageHandler(event:Event):void {

@@ -9,7 +9,7 @@ import flash.events.EventDispatcher;
 public class AppModel extends EventDispatcher {
 
     public static const CONVERSION_CHANGED:String = "conversionChanged";
-    public static const CHANGED:String = "changedConversion";
+    public static const CURRENT_CONVERSION:String = "currentConversion";
 
     private var _conversions:Array;
 
@@ -20,7 +20,6 @@ public class AppModel extends EventDispatcher {
     public function set conversions(value:Array):void {
         if(_conversions != value){
             _conversions = value;
-
             dispatchEvent(new Event(CONVERSION_CHANGED));
         }
     }
@@ -34,7 +33,7 @@ public class AppModel extends EventDispatcher {
         if(_currentConversion != value) {
             _currentConversion = value;
 
-            dispatchEvent(new Event(CHANGED));
+            dispatchEvent(new Event(CURRENT_CONVERSION));
         }
     }
 
@@ -66,8 +65,6 @@ public class AppModel extends EventDispatcher {
         trace("[AppModel] JSON Loaded");
         var conversionService:ConversionService = event.target as ConversionService;
         this.conversions = conversionService.conversions;
-
-        this.currentConversion = _conversions[0];
     }
 }
 }

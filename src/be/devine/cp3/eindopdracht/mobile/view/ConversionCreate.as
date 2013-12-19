@@ -81,7 +81,7 @@ public class ConversionCreate extends Sprite {
     private var _explicitHeight:Number = 0;
 
     public function ConversionCreate() {
-        trace("[CREATECONVERSIONSCREEN] Startup");
+        trace("[ConversionCreate] Startup");
 
         _appModel = AppModel.getInstance();
 
