@@ -11,7 +11,7 @@ import flash.geom.Rectangle;
 import starling.core.Starling;
 import starling.events.Event;
 
-[SWF(width=480, height=800, frameRate=60)]
+[SWF(width=480, height=800, frameRate=60, backgroundColor="#2d84b4")]
 
 public class Main extends Sprite {
 

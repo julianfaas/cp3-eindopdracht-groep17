@@ -8,13 +8,11 @@ import starling.animation.Tween;
 import starling.core.Starling;
 
 import starling.display.Button;
-import starling.display.DisplayObject;
 import starling.display.Sprite;
 import starling.events.Event;
 
 import starling.text.TextField;
-import starling.utils.HAlign;
-import starling.utils.VAlign;
+
 import starling.textures.TextureAtlas;
 import flash.display.BitmapData;
 import starling.textures.Texture;
@@ -92,12 +90,11 @@ public class MainScreen extends Sprite {
         if(current.name == "existingConversion") {
             trace("Choose A Conversion");
 
-            _newButton.x = -1000;
-
             _conversionsList = new ConversionsList();
             addChild(_conversionsList);
         } else {
             trace("Create A Conversion");
+
             _createConversion = new ConversionCreate();
             addChild(_createConversion);
         }

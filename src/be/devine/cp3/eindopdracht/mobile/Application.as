@@ -20,7 +20,7 @@ public class Application extends Sprite {
     public function Application() {
         trace("[Application] Startup");
 
-        new MetalWorksMobileTheme();
+//        new MetalWorksMobileTheme();
 
         _appModel = AppModel.getInstance();
 

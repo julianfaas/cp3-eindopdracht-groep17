@@ -11,6 +11,12 @@ import be.devine.cp3.eindopdracht.model.AppModel;
 import be.devine.cp3.eindopdracht.vo.ConversionVO;
 
 import flash.display.BitmapData;
+import flash.geom.Rectangle;
+
+import starling.animation.Transitions;
+
+import starling.animation.Tween;
+import starling.core.Starling;
 
 import starling.display.Button;
 import starling.display.Sprite;
@@ -36,9 +42,10 @@ public class ConversionsList extends Sprite {
     protected static const EDMONDSANS_REGULAR:Class;
 
     private var _createConversion:ConversionCreate;
+    private var _detailConversion:ConversionDetail;
 
     private var _btnMenu:Button;
-    private var _btnNewConversion:Button;
+    private var _btnNew:Button;
     private var _mainMenu:MainScreen;
     private var _appModel:AppModel;
 
@@ -46,6 +53,7 @@ public class ConversionsList extends Sprite {
     private var _title:TextField;
     private var conversionItem:Button;
     private var listContainer:Sprite;
+    private var textBound:Rectangle;
 
     public function ConversionsList() {
         trace("[ConversionsList] Startup");
@@ -61,7 +69,7 @@ public class ConversionsList extends Sprite {
         drawScreen();
     }
 
-    private function drawScreen():void{
+    private function drawScreen():void {
         _title = new TextField(300, 70, "Conversions", "FAIRVIEW_REGULAR", 60, 0xffffff);
         _title.x = 90;
         _title.hAlign = HAlign.CENTER;
@@ -69,16 +77,21 @@ public class ConversionsList extends Sprite {
         addChild(_title);
 
         _btnMenu = new Button(_atlas.getTexture(("btnMenu")));
+        _btnMenu.name = "menuConversions";
         _btnMenu.x = _btnMenu.y = 0;
-        _btnMenu.width = 65;
-        _btnMenu.height = 65;
+        _btnMenu.width = 75;
+        _btnMenu.height = 70;
         addChild( _btnMenu );
-        _btnMenu.addEventListener(Event.TRIGGERED, menuTriggeredHandler);
 
-        _btnNewConversion = new Button(_atlas.getTexture(("btnNewConversion")));
-        _btnNewConversion.x = stage.width - _btnNewConversion.width;
-        addChild( _btnNewConversion );
-        _btnNewConversion.addEventListener(starling.events.Event.TRIGGERED, newTriggeredHandler);
+        _btnNew = new Button(_atlas.getTexture(("new-btn")));
+        _btnNew.name = "newConversion";
+        _btnNew.width = 77;
+        _btnNew.height = 70;
+        _btnNew.x = stage.width - _btnNew.width;
+        addChild( _btnNew );
+
+        _btnMenu.addEventListener(Event.TRIGGERED, menuTriggeredHandler);
+        _btnNew.addEventListener(Event.TRIGGERED, menuTriggeredHandler);
 
          makeList();
     }
@@ -100,9 +113,12 @@ public class ConversionsList extends Sprite {
                 conversionItem = new Button(_atlas.getTexture("bgList2"));
             }
             conversionItem.fontName = "Edmondsans-Regular";
-            conversionItem.fontSize = 20;
+            conversionItem.fontSize = 18;
+            conversionItem.fontColor = 0x2B89B1;
             conversionItem.scaleWhenDown = 1;
             conversionItem.textHAlign = HAlign.LEFT;
+            textBound = new Rectangle(30, 0, conversionItem.textBounds.width, conversionItem.textBounds.height);
+            conversionItem.textBounds = textBound;
             conversionItem.name = conversionVO.name;
             conversionItem.text = conversionVO.name + "\n" + conversionVO.unit_1 + " - " + conversionVO.unit_2;
             conversionItem.y = yPos;
@@ -116,27 +132,36 @@ public class ConversionsList extends Sprite {
     }
 
     private function menuTriggeredHandler(event:Event):void {
+        var current = event.currentTarget;
+
         removeChild(_title);
         removeChild(_btnMenu);
-        removeChild(_btnNewConversion);
+        removeChild(_btnNew);
         removeChild(listContainer);
-        _mainMenu = new MainScreen();
-        addChild(_mainMenu);
-    }
 
-
-    private function newTriggeredHandler(event:Event):void {
-        removeChild(_title);
-        removeChild(_btnMenu);
-        removeChild(_btnNewConversion);
-        removeChild(listContainer);
-        _createConversion = new ConversionCreate();
-        addChild(_createConversion);
+        if(current.name == "menuConversions") {
+            _mainMenu = new MainScreen();
+            addChild(_mainMenu);
+        } else {
+            _createConversion = new ConversionCreate();
+            addChild(_createConversion);
+        }
     }
 
     private function selectedConversionHandler(event:Event):void {
         var current = event.currentTarget;
         trace(current.name);
+
+        removeChild(_title);
+        removeChild(_btnMenu);
+        removeChild(_btnNew);
+
+        var t:Tween = new Tween(listContainer, .5, Transitions.LINEAR);
+        t.animate("x", listContainer.x - 1000);
+        Starling.juggler.add(t);
+
+        _detailConversion = new ConversionDetail();
+        addChild( _detailConversion );
     }
 }
 }
