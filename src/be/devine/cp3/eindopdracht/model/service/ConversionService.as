@@ -2,7 +2,6 @@
 package be.devine.cp3.eindopdracht.model.service {
 
 import be.devine.cp3.eindopdracht.factory.ConversionVOFactory;
-import be.devine.cp3.eindopdracht.model.AppModel;
 
 import flash.events.Event;
 
@@ -86,6 +85,7 @@ public class ConversionService extends EventDispatcher {
             conversions.push(ConversionVOFactory.createConversionVOFromObject(conversion));
         }
         this.conversions = conversions;
+
         dispatchEvent(new Event(Event.COMPLETE));
     }
 

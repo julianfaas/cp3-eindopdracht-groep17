@@ -7,6 +7,7 @@ public class ConversionVOFactory {
 
     public static function createConversionVOFromObject(conversion:Object):ConversionVO {
         var conversionVO:ConversionVO = new ConversionVO();
+
         conversionVO.name = conversion.name;
         conversionVO.unit_1 = conversion.unit_1;
         conversionVO.short_1 = conversion.short_1;

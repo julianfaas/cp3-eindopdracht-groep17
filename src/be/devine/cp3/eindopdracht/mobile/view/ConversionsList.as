@@ -30,6 +30,9 @@ public class ConversionsList extends Sprite {
     [Embed(source="/../assets/fonts/Fairview_Regular.otf",fontName="Fairview_Regular",mimeType="application/x-font",embedAsCFF="false")]
     protected static const FAIRVIEW_REGULAR:Class;
 
+    [Embed(source="/../assets/fonts/Edmondsans-Regular.otf",fontName="Edmondsans-Regular",mimeType="application/x-font",embedAsCFF="false")]
+    protected static const EDMONDSANS_REGULAR:Class;
+
     private var _createConversion:ConversionCreate;
 
     private var _btnMenu:Button;
@@ -83,14 +86,27 @@ public class ConversionsList extends Sprite {
         listContainer.x = 0;
         listContainer.y = _title.height;
 
+        var items:uint = 0;
         var yPos:uint = 0;
-        for each(var conversionVO:ConversionVO in _appModel.conversions) {
-            trace("[ConversionsListScreen] Naam = " + conversionVO.name, conversionVO.unit_1, conversionVO.unit_2);
 
-            conversionItem = new Button(_atlas.getTexture("bgList1"));
-            conversionItem.text = conversionVO.name;
+        for each(var conversionVO:ConversionVO in _appModel.conversions) {
+            trace("[ConversionsList]" + conversionVO.name, conversionVO.unit_1, conversionVO.unit_2, conversionVO.value_1, conversionVO.value_2);
+
+            if(items % 2 == 0) {
+                conversionItem = new Button(_atlas.getTexture("bgList1"));
+            } else {
+                conversionItem = new Button(_atlas.getTexture("bgList2"));
+            }
+            conversionItem.fontName = "Edmondsans-Regular";
+            conversionItem.fontSize = 20;
+            conversionItem.scaleWhenDown = 1;
+            conversionItem.textHAlign = HAlign.LEFT;
+            conversionItem.text = conversionVO.name + "\n" + conversionVO.unit_1 + " - " + conversionVO.unit_2;
             conversionItem.y = yPos;
+
             yPos += conversionItem.height;
+            items++;
+
             listContainer.addChild( conversionItem );
         }
         addChild( listContainer );

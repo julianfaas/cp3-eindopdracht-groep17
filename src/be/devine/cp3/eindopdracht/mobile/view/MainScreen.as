@@ -62,6 +62,7 @@ public class MainScreen extends Sprite {
         _existingButton.height = 365;
         _existingButton.x = 0;
         _existingButton.y = _title.height;
+        _existingButton.scaleWhenDown = 1;
         _buttonGroup.addChild( _existingButton );
 
         _newButton = new Button(_atlas.getTexture("btnNewConversion"));
@@ -69,6 +70,7 @@ public class MainScreen extends Sprite {
         _newButton.height = 365;
         _newButton.x = 0;
         _newButton.y = _title.height + _existingButton.height;
+        _newButton.scaleWhenDown = 1;
         _buttonGroup.addChild( _newButton );
 
         addChild(_buttonGroup);
