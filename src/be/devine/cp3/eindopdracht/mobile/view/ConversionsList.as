@@ -83,12 +83,14 @@ public class ConversionsList extends Sprite {
         listContainer.x = 0;
         listContainer.y = _title.height;
 
-        for each(var conversionVO:ConversionVO in _appModel.conversions){
+        var yPos:uint = 0;
+        for each(var conversionVO:ConversionVO in _appModel.conversions) {
             trace("[ConversionsListScreen] Naam = " + conversionVO.name, conversionVO.unit_1, conversionVO.unit_2);
 
             conversionItem = new Button(_atlas.getTexture("bgList1"));
             conversionItem.text = conversionVO.name;
-            conversionItem.y = conversionItem.height;
+            conversionItem.y = yPos;
+            yPos += conversionItem.height;
             listContainer.addChild( conversionItem );
         }
         addChild( listContainer );
