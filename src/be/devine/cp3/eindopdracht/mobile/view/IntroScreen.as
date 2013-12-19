@@ -13,6 +13,7 @@ import flash.events.Event;
 import starling.animation.Transitions;
 import starling.animation.Tween;
 import starling.core.Starling;
+import starling.display.Quad;
 import starling.display.Sprite;
 import starling.events.Event;
 import starling.textures.Texture;
@@ -42,17 +43,12 @@ public class IntroScreen extends Sprite {
         addEventListener(starling.events.Event.ADDED_TO_STAGE, addedToStageHandler);
     }
 
-    private function completeHandler():void {
-        _menu = new MainScreen();
-        addChild( _menu );
-    }
-
     private function addedToStageHandler(event:starling.events.Event):void {
         _introScreen = new ImageLoader();
         _introScreen.source = _atlas.getTexture("intro");
-        addChild(_introScreen);
         _introScreen.x = (stage.stageWidth/2 - _introScreen.width/2) - 125;
-        _introScreen.y = stage.stageHeight/2 - _introScreen.height/2;
+        _introScreen.y = (stage.stageHeight/2 - _introScreen.height/2) - 50;
+        addChild(_introScreen);
 
         var t:Tween = new Tween(_introScreen, 1, Transitions.EASE_IN_OUT);
         t.animate("y", _introScreen.x - 1000);
@@ -60,6 +56,11 @@ public class IntroScreen extends Sprite {
         Starling.juggler.add(t);
 
         t.onComplete = completeHandler;
+    }
+
+    private function completeHandler():void {
+        _menu = new MainScreen();
+        addChild( _menu );
     }
 }
 }

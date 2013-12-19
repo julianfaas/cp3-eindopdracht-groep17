@@ -2,7 +2,6 @@
 package be.devine.cp3.eindopdracht.vo {
 
 public class ConversionVO {
-
     public var name:String;
     public var unit_1:String;
     public var short_1:String;
