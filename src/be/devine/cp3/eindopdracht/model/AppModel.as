@@ -1,6 +1,7 @@
 package be.devine.cp3.eindopdracht.model {
 
 import be.devine.cp3.eindopdracht.model.service.ConversionService;
+import be.devine.cp3.eindopdracht.vo.ConversionVO;
 
 import flash.events.Event;
 import flash.events.EventDispatcher;

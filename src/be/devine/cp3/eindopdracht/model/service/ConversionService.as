@@ -83,7 +83,7 @@ public class ConversionService extends EventDispatcher {
         var conversions:Array = [];
         for each(var conversion:Object in parsedJSON) {
             conversions.push(ConversionVOFactory.createConversionVOFromObject(conversion));
-            trace(conversion.unit_1);
+            trace(conversion.name);
         }
         this.conversions = conversions;
         dispatchEvent(new Event(Event.COMPLETE));
