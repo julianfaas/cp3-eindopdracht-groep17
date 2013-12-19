@@ -1,10 +1,12 @@
 <TextureAtlas imagePath="sheet.png">
-	<SubTexture name="bgList1" x="0" y="367" width="494 " height="146"/>
-	<SubTexture name="bgList2" x="0" y="515" width="494" height="147"/>
-	<SubTexture name="btnExistingConversion" x="496" y="0" width="494" height="365"/>
-	<SubTexture name="btnMenu" x="0" y="887" width="75" height="70"/>
-	<SubTexture name="btnNewConversion" x="0" y="0" width="494" height="365"/>
-	<SubTexture name="btnSwitch" x="0" y="742" width="75" height="70"/>
-	<SubTexture name="intro" x="0" y="664" width="246" height="76"/>
-	<SubTexture name="new-btn" x="0" y="814" width="75" height="71"/>
+	<SubTexture name="bgInput" x="248" y="946" width="201" height="56"/>
+	<SubTexture name="bgList1" x="496" y="0" width="494" height="146"/>
+	<SubTexture name="bgList2" x="0" y="0" width="494" height="147"/>
+	<SubTexture name="btnAddConversion" x="0" y="883" width="480" height="61"/>
+	<SubTexture name="btnExistingConversion" x="0" y="516" width="494" height="365"/>
+	<SubTexture name="btnMenu" x="496" y="220" width="75" height="70"/>
+	<SubTexture name="btnNewConversion" x="0" y="149" width="494" height="365"/>
+	<SubTexture name="btnSwitch" x="496" y="148" width="75" height="70"/>
+	<SubTexture name="intro" x="0" y="946" width="246" height="76"/>
+	<SubTexture name="new-btn" x="451" y="946" width="75" height="71"/>
 </TextureAtlas>
