@@ -82,8 +82,6 @@ public class ConversionCreate extends Sprite {
 
     private var _mainMenu:MainScreen;
 
-    private var _explicitWidth:Number = 0;
-    private var _explicitHeight:Number = 0;
 
     public function ConversionCreate() {
         trace("[ConversionCreate] Startup");
@@ -376,9 +374,10 @@ public class ConversionCreate extends Sprite {
             conversionValues.value_1 = Number(_inputAantal.text);
             conversionValues.value_2 = Number(_inputAantal2.text);
 
+       
+            }
 
         }
     }
-
 }
 }
