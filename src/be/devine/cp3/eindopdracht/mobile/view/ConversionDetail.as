@@ -143,6 +143,8 @@ public class ConversionDetail extends Sprite {
         removeChild(_conversionName);
         removeChild(_inputValue1);
         removeChild(_inputValue2);
+        removeChild(_conversionLabel1);
+        removeChild(_conversionLabel2);
 
         _mainMenu = new MainScreen();
         addChild(_mainMenu);
@@ -150,9 +152,9 @@ public class ConversionDetail extends Sprite {
 
     private function inputChangedHandler(event:Event):void {
         var formula:Number = Number(_inputValue1.text) * usedValue;
-        var round:Number = (Math.round(formula)/100) * 100;
+        formula.toFixed(2);
 
-        _inputValue2.text = round.toString();
+        _inputValue2.text = formula.toString();
     }
 }
 }

@@ -24,24 +24,24 @@ public class ConversionService extends EventDispatcher {
             writeStream.open(conversionsFile, FileMode.WRITE);
             writeStream.writeUTFBytes(JSON.stringify([
                 {
-                    name: "Geld voor sigaretten",
-                    unit_1: "sigaret",
-                    short_1: "sig",
+                    name: "Euros naar pond",
+                    unit_1: "Euro",
+                    short_1: "€",
                     value_1: 1,
 
-                    unit_2: "Euro",
-                    short_2: "€",
-                    value_2: 0.25
+                    unit_2: "Pond",
+                    short_2: "GBP",
+                    value_2: 0.84
                 },
                 {
-                    name: "Kaarten in een deck",
-                    unit_1: "Kaarten",
-                    short_1: "krt",
-                    value_1: 52,
+                    name: "Hectares omzetten naar yards",
+                    unit_1: "hectare",
+                    short_1: "ha",
+                    value_1: 1,
 
-                    unit_2: "Deck",
-                    short_2: "D",
-                    value_2: 1
+                    unit_2: "yard",
+                    short_2: "yr",
+                    value_2: 1.2
                 },
                 {
                     name: "Mijl omzetten naar kilometer",
@@ -64,14 +64,14 @@ public class ConversionService extends EventDispatcher {
                     value_2: 1.85
                 },
                 {
-                    name: "Aantal gram omzetten naar korrels",
-                    unit_1: "gram",
-                    short_1: "g",
-                    value_1: 10,
+                    name: "Liters naar gallons",
+                    unit_1: "liter",
+                    short_1: "l",
+                    value_1: 1,
 
-                    unit_2: "korrel",
-                    short_2: "gr",
-                    value_2: 20
+                    unit_2: "gallon",
+                    short_2: "gal",
+                    value_2: 0.26
                 }
             ]));
             writeStream.close();
