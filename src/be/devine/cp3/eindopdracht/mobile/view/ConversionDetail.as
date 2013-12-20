@@ -43,6 +43,7 @@ public class ConversionDetail extends Sprite {
     private var _title:TextField;
     private var _btnMenu:Button;
     private var _mainMenu:MainScreen;
+    private var _btnSaveConversion:Button;
     private var _inputValue1:TextInput;
     private var _inputValue2:TextInput;
 
@@ -104,6 +105,16 @@ public class ConversionDetail extends Sprite {
         bg3.y = 75;
         container.addChild(bg3);
 
+
+        _btnSaveConversion = new Button(_atlas.getTexture(("btnAddConversion")));
+        _btnSaveConversion.scaleWhenDown = 1;
+        _btnSaveConversion.y = 375;
+        _btnSaveConversion.width = 480;
+        _btnSaveConversion.height = 50;
+        container.addChild( _btnSaveConversion );
+        _btnSaveConversion.addEventListener(starling.events.Event.TRIGGERED, saveTriggeredHandler);
+
+
         for each(var conversionVO:ConversionVO in _appModel.conversions) {
 
             if(currentConversion == conversionVO.name) {
@@ -133,7 +144,7 @@ public class ConversionDetail extends Sprite {
                 _inputValue1.textEditorProperties.fontFamily = "EDMONDSANS_REGULAR";
                 _inputValue1.textEditorProperties.fontSize = 50;
                 _inputValue1.textEditorProperties.color = 0x4c4c4c;
-                _inputValue1.height = 200;
+                _inputValue1.height = 100;
                 _inputValue1.width = 480;
                 _inputValue1.addEventListener(Event.CHANGE, inputChangedHandler );
                 container.addChild( _inputValue1 );
@@ -142,13 +153,14 @@ public class ConversionDetail extends Sprite {
                 _inputValue2.isEditable = false;
                 _inputValue2.text = conversionVO.value_2.toString();
                 _inputValue2.x = 100;
-                _inputValue2.y = _title.height + _inputValue1.height;
+                _inputValue2.y = _title.height + _inputValue1.height + 75;
                 _inputValue2.textEditorProperties.fontFamily = "EDMONDSANS_REGULAR";
                 _inputValue2.textEditorProperties.fontSize = 50;
                 _inputValue2.textEditorProperties.color = 0x4c4c4c;
-                _inputValue2.height = 200;
+                _inputValue2.height = 100;
                 _inputValue2.width = 480;
                 container.addChild( _inputValue2 );
+
 
             }
         }
@@ -161,6 +173,12 @@ public class ConversionDetail extends Sprite {
 
         _mainMenu = new MainScreen();
         addChild(_mainMenu);
+    }
+
+    private function saveTriggeredHandler(event:Event):void {
+        trace("Save Conversion");
+        trace(_inputValue1.text + " " + _inputValue2.text);
+
     }
 
     private function inputChangedHandler(event:Event):void {
