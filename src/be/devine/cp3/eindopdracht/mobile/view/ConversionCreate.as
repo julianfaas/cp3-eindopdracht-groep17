@@ -371,7 +371,7 @@ public class ConversionCreate extends Sprite {
             conversionValues.unit_1 = _inputEenheid.text;
             conversionValues.unit_2 = _inputEenheid2.text;
             conversionValues.short_1 = _inputAfkorting.text;
-            conversionValues.short_2 = _inputAfkorting.text;
+            conversionValues.short_2 = _inputAfkorting2.text;
             conversionValues.value_1 = Number(_inputAantal.text);
             conversionValues.value_2 = Number(_inputAantal2.text);
 
@@ -384,7 +384,13 @@ public class ConversionCreate extends Sprite {
             addChild(_conversionList);
 
 
-            }
+            }else{
+
+            var txtError:TextField = new TextField(240,100,"Gelieve alle velden in te vullen!","Edmondsans-Regular",16,0X000000);
+            txtError.x = 125;
+            txtError.y = 675;
+            addChild(txtError);
+        }
 
         }
     }
