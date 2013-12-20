@@ -6,7 +6,9 @@
  * To change this template use File | Settings | File Templates.
  */
 package be.devine.cp3.eindopdracht.mobile.view {
+import be.devine.cp3.eindopdracht.factory.ConversionVOFactory;
 import be.devine.cp3.eindopdracht.model.AppModel;
+import be.devine.cp3.eindopdracht.vo.ConversionVO;
 
 
 import feathers.controls.LayoutGroup;
@@ -365,9 +367,17 @@ public class ConversionCreate extends Sprite {
            && _inputAfkorting.text
            && _inputAfkorting2.text
            && _inputEenheid.text
-           && _inputEenheid2.text != ""){
+           && _inputEenheid2.text != "") {
+            trace("Add conversion" + _inputAantal.text + _inputAfkorting.text + " " +_inputAantal2.text + _inputAfkorting2.text);
 
-        trace("Add conversion" + _inputAantal.text + _inputAfkorting.text + " " +_inputAantal2.text + _inputAfkorting2.text);
+            var conversionValues:ConversionVO = new ConversionVO();
+            conversionValues.name = _inputName.text;
+            conversionValues.unit_1 = _inputEenheid.text;
+            conversionValues.unit_2 = _inputEenheid2.text;
+            conversionValues.short_1 = _inputAfkorting.text;
+            conversionValues.short_2 = _inputAfkorting.text;
+            conversionValues.value_1 = Number(_inputAantal.text);
+            conversionValues.value_2 = Number(_inputAantal2.text);
         }
     }
 }
