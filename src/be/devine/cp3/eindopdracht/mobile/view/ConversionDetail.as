@@ -72,8 +72,9 @@ public class ConversionDetail extends Sprite {
 
     private function drawScreen():void {
         container = new Sprite();
+        addChild(container);
 
-        _title = new TextField(300, 70, "Detail Conversie", "FAIRVIEW_REGULAR", 60, 0xffffff);
+        _title = new TextField(300, 100, "Detail Conversie", "FAIRVIEW_REGULAR", 60, 0xffffff);
         _title.x = 90;
         _title.hAlign = HAlign.CENTER;
         _title.vAlign = VAlign.TOP;
@@ -84,29 +85,30 @@ public class ConversionDetail extends Sprite {
         _btnMenu.x = _btnMenu.y = 0;
         _btnMenu.scaleWhenDown = 1;
         _btnMenu.width = 75;
-        _btnMenu.height = 70;
+        _btnMenu.height = 75;
         _btnMenu.scaleWhenDown = 1;
         container.addChild( _btnMenu );
 
         var bg:Quad = new Quad(480,150);
         bg.color = 0xededed;
-        bg.y = 70;
-        addChild(bg);
+        bg.y = 75;
+        container.addChild(bg);
 
         var bg2:Quad = new Quad(480,150);
         bg2.color = 0xecebeb;
-        bg2.y = 70 + bg.height;
-        addChild(bg2);
+        bg2.y = 75 + bg.height;
+        container.addChild(bg2);
 
         var bg3:Quad = new Quad(75,300);
         bg3.color = 0x2B89B1;
-        bg3.y = 70;
-        addChild(bg3);
+        bg3.y = 75;
+        container.addChild(bg3);
 
         for each(var conversionVO:ConversionVO in _appModel.conversions) {
 
             if(currentConversion == conversionVO.name) {
                 usedValue = conversionVO.value_2;
+
 
                 _conversionName = new TextField(300, 70, currentConversion, "FAIRVIEW_REGULAR", 30, 0x5E5E5E);
                 _conversionName.x = 90;
@@ -148,7 +150,6 @@ public class ConversionDetail extends Sprite {
                 _inputValue2.width = 480;
                 container.addChild( _inputValue2 );
 
-                addChild(container);
             }
         }
 

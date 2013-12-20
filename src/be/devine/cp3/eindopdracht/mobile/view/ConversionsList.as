@@ -10,6 +10,9 @@ package be.devine.cp3.eindopdracht.mobile.view {
 import be.devine.cp3.eindopdracht.model.AppModel;
 import be.devine.cp3.eindopdracht.vo.ConversionVO;
 
+import feathers.controls.ScrollContainer;
+import feathers.controls.Scroller;
+
 import flash.display.BitmapData;
 import flash.geom.Rectangle;
 
@@ -55,6 +58,8 @@ public class ConversionsList extends Sprite {
     private var listContainer:Sprite;
     private var textBound:Rectangle;
 
+    private var _scrollContainer:ScrollContainer;
+
     public function ConversionsList() {
         trace("[ConversionsList] Startup");
         _appModel = AppModel.getInstance();
@@ -70,7 +75,7 @@ public class ConversionsList extends Sprite {
     }
 
     private function drawScreen():void {
-        _title = new TextField(300, 70, "Conversions", "FAIRVIEW_REGULAR", 60, 0xffffff);
+        _title = new TextField(300, 100, "Conversions", "FAIRVIEW_REGULAR", 60, 0xffffff);
         _title.x = 90;
         _title.hAlign = HAlign.CENTER;
         _title.vAlign = VAlign.TOP;
@@ -81,7 +86,7 @@ public class ConversionsList extends Sprite {
         _btnMenu.scaleWhenDown = 1;
         _btnMenu.x = _btnMenu.y = 0;
         _btnMenu.width = 75;
-        _btnMenu.height = 70;
+        _btnMenu.height = 75;
         _btnMenu.scaleWhenDown = 1;
         _btnMenu.height = 75;
         addChild( _btnMenu );
@@ -89,7 +94,7 @@ public class ConversionsList extends Sprite {
         _btnNew = new Button(_atlas.getTexture(("new-btn")));
         _btnNew.name = "newConversion";
         _btnNew.width = 77;
-        _btnNew.height = 70;
+        _btnNew.height = 75;
         _btnNew.x = stage.width - _btnNew.width;
         _btnNew.scaleWhenDown = 1;
         addChild( _btnNew );
@@ -101,9 +106,16 @@ public class ConversionsList extends Sprite {
     }
 
     private function makeList():void {
+        _scrollContainer = new ScrollContainer();
+        _scrollContainer.height = 725;
+        _scrollContainer.width = 480;
+        _scrollContainer.y = 75;
+        _scrollContainer.horizontalScrollPolicy = Scroller.SCROLL_POLICY_OFF;
+        addChild(_scrollContainer);
+
         listContainer = new Sprite();
         listContainer.x = 0;
-        listContainer.y = _title.height;
+        listContainer.y = 0;
 
         var items:uint = 0;
         var yPos:uint = 0;
@@ -131,7 +143,7 @@ public class ConversionsList extends Sprite {
             conversionItem.addEventListener(Event.TRIGGERED, selectedConversionHandler);
             listContainer.addChild( conversionItem );
         }
-        addChild( listContainer );
+        _scrollContainer.addChild( listContainer );
     }
 
     private function menuTriggeredHandler(event:Event):void {
@@ -140,7 +152,7 @@ public class ConversionsList extends Sprite {
         removeChild(_title);
         removeChild(_btnMenu);
         removeChild(_btnNew);
-        removeChild(listContainer);
+        removeChild(_scrollContainer);
 
         if(current.name == "menuConversions") {
             _mainMenu = new MainScreen();

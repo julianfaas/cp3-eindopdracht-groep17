@@ -81,6 +81,7 @@ public class ConversionCreate extends Sprite {
     private var _btnAddConversion:Button;
 
     private var _mainMenu:MainScreen;
+    private var _conversionList:ConversionsList;
 
 
     public function ConversionCreate() {
@@ -363,7 +364,7 @@ public class ConversionCreate extends Sprite {
            && _inputAfkorting2.text
            && _inputEenheid.text
            && _inputEenheid2.text != "") {
-            trace("Add conversion" + _inputAantal.text + _inputAfkorting.text + " " +_inputAantal2.text + _inputAfkorting2.text);
+            trace(_appModel.conversions);
 
             var conversionValues:ConversionVO = new ConversionVO();
             conversionValues.name = _inputName.text;
@@ -373,6 +374,15 @@ public class ConversionCreate extends Sprite {
             conversionValues.short_2 = _inputAfkorting.text;
             conversionValues.value_1 = Number(_inputAantal.text);
             conversionValues.value_2 = Number(_inputAantal2.text);
+
+            trace(conversionValues);
+            _appModel.conversions.push(conversionValues);
+            trace(_appModel.conversions);
+
+            removeChild(_screen);
+            _conversionList = new ConversionsList();
+            addChild(_conversionList);
+
 
             }
 

@@ -53,7 +53,7 @@ public class MainScreen extends Sprite {
     private function drawScreen(event:starling.events.Event):void {
         _buttonGroup = new Sprite();
 
-        _title = new TextField(480, 70, "Konvert", "FAIRVIEW_REGULAR", 60, 0xffffff);
+        _title = new TextField(480, 100, "Konvert", "FAIRVIEW_REGULAR", 60, 0xffffff);
         _buttonGroup.addChild(_title);
 
         _existingButton = new Button(_atlas.getTexture("btnExistingConversion"));
