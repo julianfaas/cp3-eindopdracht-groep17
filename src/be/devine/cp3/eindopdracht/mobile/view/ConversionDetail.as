@@ -15,6 +15,7 @@ import feathers.controls.TextInput;
 import flash.display.BitmapData;
 
 import starling.display.Button;
+import starling.display.Quad;
 import starling.display.Sprite;
 import starling.events.Event;
 import starling.text.TextField;
@@ -42,8 +43,6 @@ public class ConversionDetail extends Sprite {
     private var _title:TextField;
     private var _btnMenu:Button;
     private var _mainMenu:MainScreen;
-    private var valueContainer1:Sprite;
-    private var valueContainer2:Sprite;
     private var _inputValue1:TextInput;
     private var _inputValue2:TextInput;
 
@@ -52,6 +51,8 @@ public class ConversionDetail extends Sprite {
     private var _conversionLabel1:TextField;
     private var _conversionLabel2:TextField;
     private var usedValue:Number;
+
+    private var container:Sprite;
 
     public function ConversionDetail(conv:String) {
         trace("[ConversionsDetail] Startup");
@@ -70,11 +71,13 @@ public class ConversionDetail extends Sprite {
     }
 
     private function drawScreen():void {
+        container = new Sprite();
+
         _title = new TextField(300, 70, "Detail Conversie", "FAIRVIEW_REGULAR", 60, 0xffffff);
         _title.x = 90;
         _title.hAlign = HAlign.CENTER;
         _title.vAlign = VAlign.TOP;
-        addChild(_title);
+        container.addChild(_title);
 
         _btnMenu = new Button(_atlas.getTexture(("btnMenu")));
         _btnMenu.name = "menuConversions";
@@ -82,28 +85,40 @@ public class ConversionDetail extends Sprite {
         _btnMenu.width = 75;
         _btnMenu.height = 70;
         _btnMenu.scaleWhenDown = 1;
-        addChild( _btnMenu );
+        container.addChild( _btnMenu );
 
-        valueContainer1 = new Sprite();
-        valueContainer2 = new Sprite();
+        var bg:Quad = new Quad(480,150);
+        bg.color = 0xededed;
+        bg.y = 70;
+        addChild(bg);
+
+        var bg2:Quad = new Quad(480,150);
+        bg2.color = 0xecebeb;
+        bg2.y = 70 + bg.height;
+        addChild(bg2);
+
+        var bg3:Quad = new Quad(75,300);
+        bg3.color = 0x2B89B1;
+        bg3.y = 70;
+        addChild(bg3);
 
         for each(var conversionVO:ConversionVO in _appModel.conversions) {
 
             if(currentConversion == conversionVO.name) {
                 usedValue = conversionVO.value_2;
 
-                _conversionName = new TextField(300, 70, currentConversion, "FAIRVIEW_REGULAR", 30, 0xffffff);
+                _conversionName = new TextField(300, 70, currentConversion, "FAIRVIEW_REGULAR", 30, 0x5E5E5E);
                 _conversionName.x = 90;
                 _conversionName.y = _title.height;
-                addChild(_conversionName);
+                container.addChild(_conversionName);
 
-                _conversionLabel1 = new TextField(100, 70, conversionVO.unit_1 + "\n" + conversionVO.short_1, "EDMONDSANS_REGULAR", 18, 0x4c4c4c);
-                _conversionLabel1.y = _title.height + 70;
-                addChild(_conversionLabel1);
+                _conversionLabel1 = new TextField(80, 70, conversionVO.unit_1 + "\n" + conversionVO.short_1, "EDMONDSANS_REGULAR", 18, 0xededed);
+                _conversionLabel1.y = _title.height + 60;
+                container.addChild(_conversionLabel1);
 
-                _conversionLabel2 = new TextField(100, 70, conversionVO.unit_2 + "\n" + conversionVO.short_2, "EDMONDSANS_REGULAR", 18, 0x4c4c4c);
-                _conversionLabel2.y = _title.height + _conversionLabel2.height + 130;
-                addChild(_conversionLabel2);
+                _conversionLabel2 = new TextField(80, 70, conversionVO.unit_2 + "\n" + conversionVO.short_2, "EDMONDSANS_REGULAR", 18, 0xededed);
+                _conversionLabel2.y = _title.height + _conversionLabel2.height + 120;
+                container.addChild(_conversionLabel2);
 
                 _inputValue1 = new TextInput();
                 _inputValue1.setFocus();
@@ -114,11 +129,11 @@ public class ConversionDetail extends Sprite {
                 _inputValue1.y = _title.height + _conversionName.height;
                 _inputValue1.textEditorProperties.fontFamily = "EDMONDSANS_REGULAR";
                 _inputValue1.textEditorProperties.fontSize = 50;
-                _inputValue1.textEditorProperties.color = 0xffffff;
+                _inputValue1.textEditorProperties.color = 0x4c4c4c;
                 _inputValue1.height = 200;
                 _inputValue1.width = 480;
                 _inputValue1.addEventListener(Event.CHANGE, inputChangedHandler );
-                addChild( _inputValue1 );
+                container.addChild( _inputValue1 );
 
                 _inputValue2 = new TextInput();
                 _inputValue2.isEditable = false;
@@ -127,10 +142,12 @@ public class ConversionDetail extends Sprite {
                 _inputValue2.y = _title.height + _inputValue1.height;
                 _inputValue2.textEditorProperties.fontFamily = "EDMONDSANS_REGULAR";
                 _inputValue2.textEditorProperties.fontSize = 50;
-                _inputValue2.textEditorProperties.color = 0xffffff;
+                _inputValue2.textEditorProperties.color = 0x4c4c4c;
                 _inputValue2.height = 200;
                 _inputValue2.width = 480;
-                addChild( _inputValue2 );
+                container.addChild( _inputValue2 );
+
+                addChild(container);
             }
         }
 
@@ -138,13 +155,7 @@ public class ConversionDetail extends Sprite {
     }
 
     private function menuTriggeredHandler(event:Event):void {
-        removeChild(_title);
-        removeChild(_btnMenu);
-        removeChild(_conversionName);
-        removeChild(_inputValue1);
-        removeChild(_inputValue2);
-        removeChild(_conversionLabel1);
-        removeChild(_conversionLabel2);
+        removeChild(container);
 
         _mainMenu = new MainScreen();
         addChild(_mainMenu);
