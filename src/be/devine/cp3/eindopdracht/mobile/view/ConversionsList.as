@@ -78,6 +78,7 @@ public class ConversionsList extends Sprite {
 
         _btnMenu = new Button(_atlas.getTexture(("btnMenu")));
         _btnMenu.name = "menuConversions";
+        _btnMenu.scaleWhenDown = 1;
         _btnMenu.x = _btnMenu.y = 0;
         _btnMenu.width = 75;
         _btnMenu.height = 70;

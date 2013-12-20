@@ -21,6 +21,9 @@ import feathers.events.FeathersEventType;
 import feathers.layout.VerticalLayout;
 
 import flash.display.BitmapData;
+import flash.filesystem.File;
+import flash.filesystem.FileMode;
+import flash.filesystem.FileStream;
 import flash.text.TextFormatAlign;
 
 import starling.display.Button;
@@ -113,6 +116,7 @@ public class ConversionCreate extends Sprite {
 
         _btnMenu = new Button(_atlas.getTexture(("btnMenu")));
         _btnMenu.x = _btnMenu.y = 0;
+        _btnMenu.scaleWhenDown = 1;
         _btnMenu.width = 75;
         _btnMenu.height = 75;
         _screen.addChild( _btnMenu );
@@ -197,6 +201,7 @@ public class ConversionCreate extends Sprite {
         _inputAantal.y = 340;
         _inputAantal.height = 50;
         _inputAantal.width = 150;
+        _inputAantal.paddingTop = 7;
         _inputAantal.restrict = "0-9" + ".";
         _inputAantal.textEditorFactory = function():ITextEditor
         {
@@ -223,6 +228,7 @@ public class ConversionCreate extends Sprite {
         _inputAantal2.y = 460;
         _inputAantal2.height = 50;
         _inputAantal2.width = 150;
+        _inputAantal2.paddingTop = 7;
         _inputAantal2.restrict = "0-9" + ".";
         _inputAantal2.textEditorFactory = function():ITextEditor
         {
@@ -297,6 +303,7 @@ public class ConversionCreate extends Sprite {
         _screen.addChild(_txtAfkorting2);
 
         _btnAddConversion = new Button(_atlas.getTexture(("btnAddConversion")));
+        _btnAddConversion.scaleWhenDown = 1;
         _btnAddConversion.y = 750;
         _btnAddConversion.width = 480;
         _btnAddConversion.height = 50;
@@ -343,16 +350,6 @@ public class ConversionCreate extends Sprite {
         _screen.addChild(bgInput5);
     }
 
-
-    private function buttonGroupCreationCompleteHandler(event:starling.events.Event):void {
-        setSize(_explicitWidth, _explicitHeight);
-    }
-
-    public function setSize(w:Number, h:Number):void {
-        _explicitWidth = w;
-        _explicitHeight = h;
-    }
-
     private function menuTriggeredHandler(event:starling.events.Event):void {
         removeChild(_screen);
         _mainMenu = new MainScreen();
@@ -378,7 +375,10 @@ public class ConversionCreate extends Sprite {
             conversionValues.short_2 = _inputAfkorting.text;
             conversionValues.value_1 = Number(_inputAantal.text);
             conversionValues.value_2 = Number(_inputAantal2.text);
+
+
         }
     }
+
 }
 }
