@@ -36,41 +36,41 @@ public class ConversionService extends EventDispatcher {
                     name: "Conversie naam 2",
                     unit_1: "mijl",
                     short_1: "mi",
-                    value_1: 1,
+                    value_1: 2,
 
                     unit_2: "kilometer",
                     short_2: "km",
-                    value_2: 1.62
+                    value_2: 23
                 },
                 {
                     name: "Conversie naam 3",
                     unit_1: "mijl",
                     short_1: "mi",
-                    value_1: 1,
+                    value_1: 6,
 
                     unit_2: "kilometer",
                     short_2: "km",
-                    value_2: 1.62
+                    value_2: 3
                 },
                 {
                     name: "Conversie naam 4",
                     unit_1: "mijl",
                     short_1: "mi",
-                    value_1: 1,
+                    value_1: 9,
 
                     unit_2: "kilometer",
                     short_2: "km",
-                    value_2: 1.62
+                    value_2: 3.5
                 },
                 {
                     name: "Conversie naam 5",
                     unit_1: "mijl",
                     short_1: "mi",
-                    value_1: 1,
+                    value_1: 10,
 
                     unit_2: "kilometer",
                     short_2: "km",
-                    value_2: 1.62
+                    value_2: 20
                 }
             ]));
             writeStream.close();

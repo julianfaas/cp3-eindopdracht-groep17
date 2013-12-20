@@ -108,8 +108,6 @@ public class ConversionsList extends Sprite {
         var yPos:uint = 0;
 
         for each(var conversionVO:ConversionVO in _appModel.conversions) {
-            trace("[ConversionsList]" + conversionVO.name, conversionVO.unit_1, conversionVO.unit_2, conversionVO.value_1, conversionVO.value_2);
-
             if(items % 2 == 0) {
                 conversionItem = new Button(_atlas.getTexture("bgList1"));
             } else {
@@ -152,8 +150,8 @@ public class ConversionsList extends Sprite {
     }
 
     private function selectedConversionHandler(event:Event):void {
-        var current = event.currentTarget;
-        trace(current.name);
+        var current:* = event.currentTarget;
+        var currentConversion:String = current.name;
 
         removeChild(_title);
         removeChild(_btnMenu);
@@ -163,7 +161,7 @@ public class ConversionsList extends Sprite {
         t.animate("x", listContainer.x - 1000);
         Starling.juggler.add(t);
 
-        _detailConversion = new ConversionDetail();
+        _detailConversion = new ConversionDetail(currentConversion);
         addChild( _detailConversion );
     }
 }
