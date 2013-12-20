@@ -123,7 +123,7 @@ public class ConversionCreate extends Sprite {
         //CONVERSIE NAAM
         _inputName = new TextInput();
         _inputName.x = 200;
-        _inputName.textEditorProperties.fontFamily = "EDMONDSANS_REGULAR";
+        _inputName.textEditorProperties.fontFamily = "Edmondsans-Regular";
         _inputName.y = 75;
         _inputName.textEditorProperties.fontSize = 25;
         _inputName.paddingTop = 7;
@@ -133,9 +133,9 @@ public class ConversionCreate extends Sprite {
         _inputName.backgroundSkin = new Image(_atlas.getTexture('bgInput'));
         _screen.addChild(_inputName);
 
-        _txtName = new TextField(200, 100, "Naam conversie:", "EDMONDSANS_REGULAR", 20, 0xa3a3a3);
+        _txtName = new TextField(200, 100, "Naam conversie:", "Edmondsans-Regular", 20, 0xa3a3a3);
         _txtName.x = 0;
-        _txtName.y = 45;
+        _txtName.y = 85;
         _txtName.italic = true;
         _txtName.hAlign = HAlign.CENTER;
         _txtName.vAlign = VAlign.TOP;
@@ -151,7 +151,7 @@ public class ConversionCreate extends Sprite {
         _inputEenheid.textEditorFactory = function():ITextEditor
         {
             var editor:StageTextTextEditor = new StageTextTextEditor();
-            editor.fontFamily = "EDMONDSANS_REGULAR";
+            editor.fontFamily = "Edmondsans-Regular";
             editor.color = 0xA3A3A3;
             editor.fontSize = 25;
             return editor;
@@ -159,7 +159,7 @@ public class ConversionCreate extends Sprite {
         _inputEenheid.backgroundSkin = new Image(_atlas.getTexture('bgInput'));
         _screen.addChild(_inputEenheid);
 
-        _txtEenheid = new TextField(200, 100, "Eenheid:", "EDMONDSANS_REGULAR", 20, 0xa3a3a3);
+        _txtEenheid = new TextField(200, 100, "Eenheid:", "Edmondsans-Regular", 20, 0xa3a3a3);
         _txtEenheid.x = 0;
         _txtEenheid.y = 160;
         _txtEenheid.italic = true;
@@ -177,7 +177,7 @@ public class ConversionCreate extends Sprite {
         _inputAfkorting.textEditorFactory = function():ITextEditor
         {
             var editor:StageTextTextEditor = new StageTextTextEditor();
-            editor.fontFamily = "EDMONDSANS_REGULAR";
+            editor.fontFamily = "Edmondsans-Regular";
             editor.color = 0xA3A3A3;
             editor.fontSize = 25;
             return editor;
@@ -185,7 +185,7 @@ public class ConversionCreate extends Sprite {
         _inputAfkorting.backgroundSkin = new Image(_atlas.getTexture('bgInput'));
         _screen.addChild(_inputAfkorting);
 
-        _txtAfkorting = new TextField(200, 100, "Afkorting:", "EDMONDSANS_REGULAR", 20, 0xa3a3a3);
+        _txtAfkorting = new TextField(200, 100, "Afkorting:", "Edmondsans-Regular", 20, 0xa3a3a3);
         _txtAfkorting.x = 0;
         _txtAfkorting.y = 220;
         _txtAfkorting.italic = true;
@@ -204,7 +204,7 @@ public class ConversionCreate extends Sprite {
         _inputAantal.textEditorFactory = function():ITextEditor
         {
             var editor:StageTextTextEditor = new StageTextTextEditor();
-            editor.fontFamily = "EDMONDSANS_REGULAR";
+            editor.fontFamily = "Edmondsans-Regular";
             editor.color = 0xA3A3A3;
             editor.fontSize = 25;
             return editor;
@@ -212,7 +212,7 @@ public class ConversionCreate extends Sprite {
         _inputAantal.backgroundSkin = new Image(_atlas.getTexture('bgInput'));
         _screen.addChild(_inputAantal);
 
-        _txtAantal = new TextField(200, 100, "Aantal:", "EDMONDSANS_REGULAR", 20, 0xa3a3a3);
+        _txtAantal = new TextField(200, 100, "Aantal:", "Edmondsans-Regular", 20, 0xa3a3a3);
         _txtAantal.x = 20;
         _txtAantal.y = 350;
         _txtAantal.italic = true;
@@ -231,7 +231,7 @@ public class ConversionCreate extends Sprite {
         _inputAantal2.textEditorFactory = function():ITextEditor
         {
             var editor:StageTextTextEditor = new StageTextTextEditor();
-            editor.fontFamily = "EDMONDSANS_REGULAR";
+            editor.fontFamily = "Edmondsans-Regular";
             editor.color = 0xA3A3A3;
             editor.fontSize = 25;
             return editor;
@@ -239,7 +239,7 @@ public class ConversionCreate extends Sprite {
         _inputAantal2.backgroundSkin = new Image(_atlas.getTexture('bgInput'));
         _screen.addChild(_inputAantal2);
 
-        _txtAantal2 = new TextField(200, 100, "Aantal:", "EDMONDSANS_REGULAR", 20, 0xa3a3a3);
+        _txtAantal2 = new TextField(200, 100, "Aantal:", "Edmondsans-Regular", 20, 0xa3a3a3);
         _txtAantal2.x = 20;
         _txtAantal2.y = 470;
         _txtAantal2.italic = true;
@@ -258,7 +258,7 @@ public class ConversionCreate extends Sprite {
         _inputEenheid2.textEditorFactory = function():ITextEditor
         {
             var editor:StageTextTextEditor = new StageTextTextEditor();
-            editor.fontFamily = "EDMONDSANS_REGULAR";
+            editor.fontFamily = "Edmondsans-Regular";
             editor.color = 0xA3A3A3;
             editor.fontSize = 25;
             return editor;
@@ -266,7 +266,7 @@ public class ConversionCreate extends Sprite {
         _screen.addChild(_inputEenheid2);
 
 
-        _txtEenheid2 = new TextField(200, 100, "Eenheid:", "EDMONDSANS_REGULAR", 20, 0xa3a3a3);
+        _txtEenheid2 = new TextField(200, 100, "Eenheid:", "Edmondsans-Regular", 20, 0xa3a3a3);
         _txtEenheid2.x = 0;
         _txtEenheid2.y = 605;
         _txtEenheid2.italic = true;
@@ -284,7 +284,7 @@ public class ConversionCreate extends Sprite {
         _inputAfkorting2.textEditorFactory = function():ITextEditor
         {
             var editor:StageTextTextEditor = new StageTextTextEditor();
-            editor.fontFamily = "EDMONDSANS_REGULAR";
+            editor.fontFamily = "Edmondsans-Regular";
             editor.color = 0xA3A3A3;
             editor.fontSize = 25;
             return editor;
@@ -292,7 +292,7 @@ public class ConversionCreate extends Sprite {
         _inputAfkorting2.backgroundSkin = new Image(_atlas.getTexture('bgInput'));
         _screen.addChild(_inputAfkorting2);
 
-        _txtAfkorting2 = new TextField(200, 100, "Afkorting:", "EDMONDSANS_REGULAR", 20, 0xa3a3a3);
+        _txtAfkorting2 = new TextField(200, 100, "Afkorting:", "Edmondsans-Regular", 20, 0xa3a3a3);
         _txtAfkorting2.x = 0;
         _txtAfkorting2.y = 660;
         _txtAfkorting2.italic = true;
@@ -374,10 +374,8 @@ public class ConversionCreate extends Sprite {
             conversionValues.value_1 = Number(_inputAantal.text);
             conversionValues.value_2 = Number(_inputAantal2.text);
 
-       
             }
 
         }
     }
-}
 }
