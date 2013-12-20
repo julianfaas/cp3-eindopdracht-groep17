@@ -134,16 +134,6 @@ public class ConversionDetail extends Sprite {
             }
         }
 
-//        var bg:Quad = new Quad(480,150);
-//        bg.color = 0xededed;
-//        bg.y = _title.height;
-//        addChild(bg);
-//
-//        var bg2:Quad = new Quad(480,150);
-//        bg2.color = 0xe8e7e7;
-//        bg2.y = _title.height + bg.height;
-//        addChild(bg2);
-
         _btnMenu.addEventListener(Event.TRIGGERED, menuTriggeredHandler);
     }
 
@@ -161,7 +151,7 @@ public class ConversionDetail extends Sprite {
     private function inputChangedHandler(event:Event):void {
         var formula:Number = Number(_inputValue1.text) * usedValue;
         var round:Number = (Math.round(formula)/100) * 100;
-        
+
         _inputValue2.text = round.toString();
     }
 }

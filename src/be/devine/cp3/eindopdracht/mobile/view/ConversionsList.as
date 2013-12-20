@@ -108,6 +108,7 @@ public class ConversionsList extends Sprite {
         var yPos:uint = 0;
 
         for each(var conversionVO:ConversionVO in _appModel.conversions) {
+            trace(conversionVO.name);
             if(items % 2 == 0) {
                 conversionItem = new Button(_atlas.getTexture("bgList1"));
             } else {
